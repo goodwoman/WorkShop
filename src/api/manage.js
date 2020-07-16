@@ -8,6 +8,8 @@ const api = {
     upload: '/insert',
     articleid: '/selectById',
     keywords: '/selectByQuery',
+    submitComment: '/insertComment',
+    deleteArticle: '/delete'
 
 };
 //getHeartList getTechologyList getPolicyList getkeywords
@@ -41,9 +43,23 @@ export function upload(parameter) {
         data: parameter
     });
 }
+export function submitComment(parameter) {
+    return request({
+        url: api.submitComment,
+        method: 'post',
+        data: parameter
+    });
+}
 export function getDetail(id, parameter) {
     return request({
         url: api.articleid + '/' + id,
+        method: 'get',
+        params: parameter
+    });
+}
+export function deleteArticle(id, parameter) {
+    return request({
+        url: api.deleteArticle + '/' + id,
         method: 'get',
         params: parameter
     });

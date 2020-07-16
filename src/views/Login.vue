@@ -104,7 +104,7 @@ export default {
         if (!err) {
           login(this.phone,this.captcha).then(res => {
               if(res.msg == "ok"){
-                sessionStorage.setItem('accessToken' , 写入登录成功返回的登录令牌或者自定义的判断字符串) 
+                sessionStorage.setItem('accessToken' , "logined") 
                 this.$router.push("/")
               }
               else{

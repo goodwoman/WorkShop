@@ -3,6 +3,7 @@ import urequest from '@/utils/urequest';
 const userApi = {
     getYzm: '/getYzm',
     login: '/yzmLogin',
+    register: '/register',
     TokenLogin: '/sso/tokenLogin',
     Logout: '/sso/logout',
     CheckToken: '/sso/checkToken',
@@ -21,6 +22,13 @@ export function login(phone, code) {
     return urequest({
         url: userApi.login + "/?phonenum=" + phone + "&yzm=" + code,
         method: 'post',
+    });
+}
+export function register(parameter) {
+    return urequest({
+        url: userApi.register,
+        method: 'post',
+        data: parameter
     });
 }
 
