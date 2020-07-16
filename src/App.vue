@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <ArticleList></ArticleList>
+    <!-- <ArticleDetail></ArticleDetail> -->
+    <!-- <router-view></router-view> -->
+    <Login></Login>
   </div>
 </template>
 
@@ -28,13 +29,56 @@
 }
 </style>
 <script>
-import Header from "./components/common/Header"
-import ArticleList from "./components/ArticleList"
+// import Header from "./components/common/Header"
+// import ArticleList from "./components/ArticleList"
+// import FullTextList from "./views/FullTextEdit"
+// import ArticleDetalis from "./views/ArticleDetail"
+// export default {
+//   name:"App",
+//   data(){
+//     return {
+//       routerShow:true,
+//       bodyShow:true
+//     }
+//   },
+//   components:{
+//     Header,
+//     ArticleList,
+//     FullTextList,
+//     ArticleDetalis
+//   },
+//   methods:{
+//     changeUrl(url) {
+//       console.log(url);
+//       this.isShow = true
+//       this.bodyShow = false
+//     }
+//   },
+//   watch:{
+//     $route:{
+//       handler:function(route){
+//         console.log(route)
+//         routerShow:true;
+//       }
+//     }
+//   }
+//}
+import HeaderPage from "./views/HeaderPage"
+import ArticleDetail from "./views/ArticleDetail"
+import Login from "./views/Login"
 export default {
   name:"App",
+  data(){
+    return {
+      routerShow:true,
+      bodyShow:true
+    }
+  },
   components:{
-    Header,
-    ArticleList
-  }
+    HeaderPage,
+    ArticleDetail,
+    Login
+  },
 }
+
 </script>

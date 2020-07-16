@@ -1,71 +1,71 @@
 <template>
   <div class="content">
-      <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
-       <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
-       <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
-       <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
-       <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
-       <a-card hoverable style="width: 950px; margin:0 auto">
-          <h2 style="float:left">十五个简单的js编码标准让你的代码更简洁</h2>
-          <h4 style="float:left;margin:0;padding:0" >继“逐梦者·流量突出贡献奖”之后，返利网对外宣布再次获得京东“卓越伙伴奖”。据悉，该奖项既是京东对返利网的嘉奖，以肯定其对...</h4>
-          <div class="watch">
-             <span><a-icon type="like" style="margin-top:7px ;color:rgba(0, 0, 0, 0.45);"/>18</span>
-             <span><a-icon type="edit" style="margin-top:7px" />8</span>
-             <span><a-icon type="star" style="margin-top:7px"/>45</span>
-             <span style="width:200px;margin-bottom:0px" > <a-icon type="star" style="margin-top:7px"/>2018-09-16&nbsp;23:00</span>
-         </div>
-       </a-card>
+    <div
+    v-infinite-scroll="handleInfiniteOnLoad"
+    class="demo-infinite-container"
+    :infinite-scroll-disabled="busy"
+    :infinite-scroll-distance="10"
+  >
+      <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="resultList" style="width:800px;margin:0 auto;textAlign:left">
+    <div slot="footer"><b>ant design vue</b> footer part</div>
+    <a-list-item slot="renderItem" key="item.title" slot-scope="item" style="text-algin:left">
+      <template v-for="{ type, text } in actions" slot="actions">
+        <span :key="type">
+          <a-icon :type="type" style="margin-right: 8px" />
+          {{ text }}
+        </span>
+      </template>
+      <a-list-item-meta :description="item.username">
+        <a slot="title" href="#"> <router-link :to="`/detail/`+ item.articleid">{{ item.title }}</router-link></a>
+        <!-- <a-avatar slot="avatar" :src="item.avatar" /> -->
+      </a-list-item-meta>
+      {{ item.content }}
+      <!-- <router-link :to="{name:'Detail',query:{id:item.articleid}}"> -->
+    </a-list-item>
+  </a-list>
+    </div>
   </div>
 </template>
 
 <script>
+const listData = [];
+for (let i = 0; i < 23; i++) {
+  listData.push({
+    title: `vue的使用 ${i}`,
+    username:
+      'Jackson',
+      articleid:
+      "12434",
+    content:
+      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+  });
+}
 export default {
-
+  name:"ArticleList",
+  computed:{
+    resultList(){
+      console.log("resultList is changed")
+      console.log(this.$store.state.resultList)
+      return this.$store.state.resultList    
+    }
+  },
+  data() {
+    return {
+      listData,
+      pagination: {
+        onChange: page => {
+          console.log(page);
+        },
+        pageSize: 5,
+      },
+      actions: [
+        { type: 'star-o', text: '156' },
+        { type: 'like-o', text: '156' },
+        { type: 'message', text: '2' },
+        {type:'clock-circle',text:'2019-08-23 23:30'}
+      ],
+    };
+  }
 }
 </script>
 
