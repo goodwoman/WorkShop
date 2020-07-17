@@ -1,19 +1,26 @@
 import request from '@/utils/request';
 
 const api = {
-    heartlist: '/selectAllNotPage',
+    list: '/selectAllNotPage',
     heart: '/selectByKind/1',
     techologylist: '/selectByKind/2',
     policylist: '/selectByKind/3',
     upload: '/insert',
-    articleid: '/selectById',
+    articleid: '/selectAllQueryById',
     keywords: '/selectByQuery',
-    submitComment: '/insertComment',
+    submitComment: '/insert',
     deleteArticle: '/delete'
 
 };
 //getHeartList getTechologyList getPolicyList getkeywords
 export default api;
+export function getAllList(parameter) {
+    return request({
+        url: api.list,
+        method: 'get',
+        params: parameter
+    });
+}
 
 export function getHeartList(parameter) {
     return request({

@@ -14,7 +14,7 @@
             <a-icon type="edit" /><router-link to="/edit" tag="span">写文章</router-link>
           </a-menu-item>
           <a-menu-item key="setting:4">
-            <a-icon type="user" /><router-link to="/edit" tag="span">我的主页</router-link>
+            <a-icon type="user" /><router-link to="/home" tag="span">我的主页</router-link>
           </a-menu-item>
           <a-menu-item key="setting:2">
             <a-icon type="like" /><router-link to="/edit" tag="span">我赞过的</router-link>
@@ -26,7 +26,7 @@
             <a-icon type="star" /><router-link to="/edit" tag="span">我的收藏</router-link>
           </a-menu-item>      
       </a-sub-menu>
-      <a-sub-menu v-if="true">    
+      <a-sub-menu v-if="isLogin">    
         <span slot="title" class="submenu-title-wrapper"
           ><a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="color: #f56a00; backgroundColor: #fde3cf"/></span
         >       
@@ -37,9 +37,9 @@
             <a-icon type="left-square" />退出登录
           </a-menu-item>  
       </a-sub-menu>
-      <a-menu-item key="validate" v-><router-link to="/edit" tag="span">登录</router-link></a-menu-item>
-      <a-menu-item key="validate">|</a-menu-item>
-      <a-menu-item key="validate" ><router-link to="/edit" tag="span">注册</router-link></a-menu-item>
+      <a-menu-item key="validate" v-if="!isLogin" style="color:red"><router-link to="/login" tag="span">登录</router-link></a-menu-item>
+      <a-menu-item key="validate" v-if="!isLogin" >|</a-menu-item>
+      <a-menu-item key="validate" v-if="!isLogin" style="color:red"><router-link to="/register" tag="span">注册</router-link></a-menu-item>
       
     </a-menu>
     
@@ -52,7 +52,8 @@ export default {
     data() {
     return {
       current: ['mail'],
-      keywords:""
+      keywords:"",
+      isLogin:false
     };
   },
   mounted(){

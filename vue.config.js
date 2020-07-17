@@ -24,6 +24,10 @@ module.exports = {
             '/wpg/user 8001': {
                 target: 'http://10.200.5.244:10003/',
                 changeOrigin: true,
+            },
+            '/comment': {
+                target: 'http://10.200.5.244:10002/',
+                changeOrigin: true,
             }
         }
     }
