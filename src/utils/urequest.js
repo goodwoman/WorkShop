@@ -23,7 +23,7 @@ axios({
 // 创建 axios 实例
 const urequest = axios.create({
     // API 请求的默认前缀
-    baseURL: "/wpg/user 8001",
+    baseURL: "/wpg/user",
     timeout: 6000, // 请求超时时间,
     contentType: 'application/json'
 

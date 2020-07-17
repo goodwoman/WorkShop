@@ -21,8 +21,8 @@ module.exports = {
                 //     '^/article': '' // 请求的时候 /api就会替换成 ''
                 // }
             },
-            '/wpg/user 8001': {
-                target: 'http://10.200.5.244:10003/',
+            '/wpg/user': {
+                target: 'http://10.200.5.209:8001/',
                 changeOrigin: true,
             },
             '/comment': {

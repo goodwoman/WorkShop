@@ -167,10 +167,10 @@ export default {
             email:this.email,
             password:this.password,
             username:this.username,
-            phone:this.phone
+            phonenum:this.phone
           })
           register(param).then(res =>{
-            if(res.msg == "ok"){
+            if(res.statusText == "OK"){
               this.$router.push("/login")
             }
           })

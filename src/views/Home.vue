@@ -1,101 +1,100 @@
 <template>
-  <div class="home">
-    <Header></Header>
-    <div class="bodycontent" style="width:900px;margin:10px auto">
-      <a-list
-    class="demo-loadmore-list"
-    :loading="loading"
-    item-layout="horizontal"
-    :data-source="data"
-    style="textAlign:left"
-  >
+  <div class="content">
     <div
-      v-if="showLoadingMore"
-      slot="loadMore"
-      :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }"
-    >
-      <a-spin v-if="loadingMore" />
-      <a-button v-else @click="onLoadMore">
-        loading more
-      </a-button>
-    </div>
-    <a-list-item slot="renderItem" slot-scope="item, index">
-      <a slot="actions">edit</a>
-      <a slot="actions" @click="delArticle">delete</a>
-      <a slot="actions" ><router-link :to="data" >more</router-link></a>
-      <!-- <a slot="actions">more</a> -->
-      <a-list-item-meta style="cursor:pointer"
-        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-      >
-        <a slot="title" href="https://www.antdv.com/">{{ item.name.last }}</a>
-        <a-avatar
-          slot="avatar"
-          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-        />
+    v-infinite-scroll="handleInfiniteOnLoad"
+    class="demo-infinite-container"
+    :infinite-scroll-disabled="busy"
+    :infinite-scroll-distance="10"
+  >
+      <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="resultList" style="width:800px;margin:0 auto;textAlign:left">
+    <div slot="footer"><b>ant design vue</b> footer part</div>
+    <a-list-item slot="renderItem" key="item.title" slot-scope="item" style="text-algin:left">
+      <template v-for="{ type, text } in actions" slot="actions">
+        <span :key="type">
+          <a-icon :type="type" style="margin-right: 8px" />
+          {{ text }}
+        </span>
+      </template>
+      <a-list-item-meta :description="item.username">
+        <a slot="title" href="#"> <router-link :to="`/detail/`+ item.articleid">{{ item.title }}</router-link></a>
+        <!-- <a-avatar slot="avatar" :src="item.avatar" /> -->
       </a-list-item-meta>
-      
+      {{ item.content }}
+      <!-- <router-link :to="{name:'Detail',query:{id:item.articleid}}"> -->
     </a-list-item>
   </a-list>
     </div>
-
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
-import Header from "../components/common/Header"
-import reqwest from 'reqwest';
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
-import {deleteArticle} from "../api/manage"
+import {getMyArticle} from "../api/manage"
+const listData = [];
+for (let i = 0; i < 23; i++) {
+  listData.push({
+    title: `vue的使用 ${i}`,
+    username:
+      'Jackson',
+      articleid:
+      "12434",
+    content:
+      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+  });
+}
 export default {
-  name: 'Home',
-  components:{
-    Header
+  name:"ArticleList",
+  computed:{
+    resultList(){
+      console.log("resultList is changed")
+      console.log(this.$store.state.myArticle)
+      return this.$store.state.myArticle    
+    }
   },
   data() {
     return {
-      loading: true,
-      loadingMore: false,
-      showLoadingMore: true,
-      data: [],
+      listData,
+      pagination: {
+        onChange: page => {
+          console.log(page);
+        },
+        pageSize: 5,
+      },
+      actions: [
+        { type: 'star-o', text: '156' },
+        { type: 'like-o', text: '156' },
+        { type: 'message', text: '2' },
+        {type:'clock-circle',text:'2019-08-23 23:30'}
+      ],
     };
   },
-  mounted() {
-    this.getData(res => {
-      this.loading = false;
-      this.data = res.results;
-    });
-  },
-  methods: {
-    getData(callback) {
-      reqwest({
-        url: fakeDataUrl,
-        type: 'json',
-        method: 'get',
-        contentType: 'application/json',
-        success: res => {
-          callback(res);
-        },
-      });
-    },
-    delArticle(){
-      let id = 1
-      deleteArticle(1).then(res => {
-        console.log("delete successed")
-      })
-    },
-    onLoadMore() {
-      this.loadingMore = true;
-      this.getData(res => {
-        this.data = this.data.concat(res.results);
-        this.loadingMore = false;
-        this.$nextTick(() => {
-          window.dispatchEvent(new Event('resize'));
-        });
-      });
-    },
-  },
-  
+  mounted(){
+    let uid = sessionStorage.getItem('userid');
+    console.log(uid)
+    getMyArticle(uid).then(res =>{
+      this.$store.commit("updateMyArticle",res.data.data.rows)
+      console.log(res)
+    })
+  }
 }
 </script>
+
+<style lang="less">
+.watch{
+    position:absolute;
+    bottom:0;
+    right: 0;
+    margin-bottom: 0px;
+    span{
+        float: right;
+        width:50px;
+        height:25px;
+        margin-top:6px;      
+        text-align: center;
+        a-icon{
+            float: left;
+        }
+    }
+    
+}
+
+</style>

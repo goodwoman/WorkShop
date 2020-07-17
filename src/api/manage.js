@@ -9,7 +9,8 @@ const api = {
     articleid: '/selectAllQueryById',
     keywords: '/selectByQuery',
     submitComment: '/insert',
-    deleteArticle: '/delete'
+    deleteArticle: '/delete',
+    myarticle: '/selectAllArticle'
 
 };
 //getHeartList getTechologyList getPolicyList getkeywords
@@ -76,6 +77,13 @@ export function getkeywords(parameter) {
         url: api.keywords,
         method: 'post',
         data: parameter
+    });
+}
+export function getMyArticle(userid) {
+    return request({
+        url: api.myarticle + "/" + userid,
+        method: 'get',
+
     });
 }
 

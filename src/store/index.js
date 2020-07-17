@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        resultList: []
+        resultList: [],
+        myArticle: []
     },
     mutations: {
         // updateAll(state, hearts) {
@@ -22,6 +23,10 @@ export default new Vuex.Store({
         // },
         updateResultList(state, result) {
             state.resultList = result;
+            console.log(state.resultList + "---------");
+        },
+        updateMyArticle(state, result) {
+            state.myArticle = result;
             console.log(state.resultList + "---------");
         }
     },

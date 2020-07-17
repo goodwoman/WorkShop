@@ -10,21 +10,21 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/googlecode.css'
 
 Vue.directive('highlight', (el) => {
-    let blocks = el.querySelectorAll('pre code')
-    blocks.forEach((block) => {
-        hljs.highlightBlock(block)
+        let blocks = el.querySelectorAll('pre code')
+        blocks.forEach((block) => {
+            hljs.highlightBlock(block)
+        })
     })
-})
-router.beforeEach((to, from, next) => {
-    //to即将进入的目标路由对象，from当前导航正要离开的路由， next : 下一步执行的函数钩子
-    if (to.path === '/login') { next() } // 如果即将进入登录路由，则直接放行
-    else { //进入的不是登录路由
-        if (to.meta.requiresAuth && !sessionStorage.getItem('accessToken')) { next({ path: '/login' }) }
-        //下一跳路由需要登录验证，并且还未登录，则路由定向到 登录路由
-        else { next() }
-    }
-    //如果不需要登录验证，或者已经登录成功，则直接放行
-})
+    // router.beforeEach((to, from, next) => {
+    //     //to即将进入的目标路由对象，from当前导航正要离开的路由， next : 下一步执行的函数钩子
+    //     if (to.path === '/login') { next() } // 如果即将进入登录路由，则直接放行
+    //     else { //进入的不是登录路由
+    //         if (to.meta.requiresAuth && sessionStorage.getItem('accessToken') !== "logined") { next({ path: '/login' }) }
+    //         //下一跳路由需要登录验证，并且还未登录，则路由定向到 登录路由
+    //         else { next() }
+    //     }
+    //     //如果不需要登录验证，或者已经登录成功，则直接放行
+    // })
 Vue.use(mavonEditor)
 
 Vue.config.productionTip = false
@@ -34,3 +34,29 @@ new Vue({
     store,
     render: h => h(App)
 }).$mount('#app')
+router.beforeEach((to, from, next) => {
+    console.log("is doing login validate")
+    let f1 = (to.meta.requireAuth == true)
+    let f2 = !sessionStorage.getItem('accessToken')
+    console.log(to.meta.requireAuth)
+    console.log(!sessionStorage.getItem('accessToken'))
+
+    //to即将进入的目标路由对象，from当前导航正要离开的路由， next : 下一步执行的函数钩子
+    if (to.path === '/login') { next() } // 如果即将进入登录路由，则直接放行
+    else { //进入的不是登录路由
+        console.log("is not login")
+            // console((to.meta.requiresAuth) && (!sessionStorage.getItem('accessToken')))
+            // console.log(true && true)
+        console.log(typeof(to.meta.requiresAuth))
+        if (f1 === true && f2 === true) {
+            console.log("is gonging login")
+            next({ path: '/login' })
+        }
+        //下一跳路由需要登录验证，并且还未登录，则路由定向到 登录路由
+        else {
+            console.log("going to edit")
+            next()
+        }
+    }
+    //如果不需要登录验证，或者已经登录成功，则直接放行
+})

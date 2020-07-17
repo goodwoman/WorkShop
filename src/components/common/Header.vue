@@ -1,6 +1,6 @@
 <template>
   <div class="content">   
-      <a-menu v-model="current" mode="horizontal" style="padding-left:-200px">
+      <a-menu  mode="horizontal" style="padding-left:-200px">
         <a-menu-item key="logo" class="logo"></a-menu-item>
         <a-menu-item key="heart" @click="getHeart"> <a-icon type="mail" />技术心得</a-menu-item>
         <a-menu-item key="techlogy" @click="getTech" > <a-icon type="appstore" />新技术 </a-menu-item>
@@ -27,13 +27,14 @@
           </a-menu-item>      
       </a-sub-menu>
       <a-sub-menu v-if="isLogin">    
-        <span slot="title" class="submenu-title-wrapper"
-          ><a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="color: #f56a00; backgroundColor: #fde3cf"/></span
-        >       
+        <span slot="title" class="submenu-title-wrapper">
+          <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="color: #f56a00; backgroundColor: #fde3cf"/>
+          {{username}}
+        </span>       
           <a-menu-item key="setting:1">
             <a-icon type="setting" />设置
           </a-menu-item>
-          <a-menu-item key="setting:4">
+          <a-menu-item key="setting:4" @click="loginOut">
             <a-icon type="left-square" />退出登录
           </a-menu-item>  
       </a-sub-menu>
@@ -47,22 +48,25 @@
 </template>
 
 <script>
-import {getHeartList,getTechologyList,getPolicyList,getkeywords} from "../../api/manage"
+import {getHeartList,getTechologyList,getPolicyList,getkeywords,getAllList} from "../../api/manage"
 export default {
     data() {
     return {
-      current: ['mail'],
+      // current: [''],
       keywords:"",
-      isLogin:false
+      isLogin:false ,
+      username:""
     };
   },
   mounted(){
-    // getHeartList().then((res) =>{
-    //   console.log(res)
-    // })
-    // console.log("mounted is running")
-    
-    // this.$store.dispatch('handlerHeartList')
+    console.log(sessionStorage.getItem("username"))
+    this.isLogin = sessionStorage.getItem("accessToken") == "logined" ? true:false
+    this.username = sessionStorage.getItem("username") == undefined ? "": sessionStorage.getItem("username")
+    getAllList().then((res) =>{
+      console.log(res)
+      alert("AllList change")
+      this.$store.commit('updateResultList',res.data.data);
+    })
   },
   methods:{
     getHeart(){
@@ -94,6 +98,11 @@ export default {
         this.$store.commit("updateResultList",res.data.data)
       })
 
+    },
+    loginOut() {
+      console.log("is loginout")
+      this.isLogin = false
+      sessionStorage.clear()
     }
   }
   

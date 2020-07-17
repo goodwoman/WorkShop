@@ -92,6 +92,7 @@ export default {
           },
         },
       },
+      
     };
   },
   beforeCreate() {
@@ -103,8 +104,15 @@ export default {
       this.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           login(this.phone,this.captcha).then(res => {
-              if(res.msg == "ok"){
-                sessionStorage.setItem('accessToken' , "logined") 
+            console.log(res)
+              if(res.statusText == "OK"){
+                sessionStorage.setItem('accessToken' , "logined")
+                sessionStorage.setItem('email',res.data.data.email)
+                sessionStorage.setItem('password',res.data.data.password)
+                sessionStorage.setItem('phonenum',res.data.data.phonenum)
+                sessionStorage.setItem('token',res.data.data.token)
+                sessionStorage.setItem('username',res.data.data.username)
+                sessionStorage.setItem('userid',res.data.data.userid)
                 this.$router.push("/")
               }
               else{
@@ -129,7 +137,7 @@ export default {
         });
       }else{
           getYzm(this.phone).then(res =>{
-              if(res.msg == "ok")
+              if(res.statusText == "OK")
                 this.isdisabledFn = true;
           })
       }
